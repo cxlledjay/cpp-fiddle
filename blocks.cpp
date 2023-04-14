@@ -23,7 +23,9 @@ int calculate_distance(int i , std::vector<Block>& blocks , std::string key){
 		int distance = blocks.size(); //make distance max
 		std::unordered_map<std::string , bool> map = blocks[i].buildings; //get map of current pois
 		
-		if(map[key]) return 0; //poi of key is in given block -> distance = 0;
+		if(map[key]){
+			return 0;
+		} //poi of key is in given block -> distance = 0;
 		
 		//calculate distance if poi is in blocks with higher indexes
 		for(int bigger = i+1 ; bigger < blocks.size(); bigger++){
@@ -45,15 +47,13 @@ int main(){
 	//given
 	//blocks
 	std::vector<Block> blocks;
-	blocks.push_back(Block{false, false, true }); //0
-	blocks.push_back(Block{false, false, false}); //1
-	blocks.push_back(Block{true , false, false}); //2
+	blocks.push_back(Block{false, true , false}); //0
+	blocks.push_back(Block{true , false, false}); //1
+	blocks.push_back(Block{true , true , false}); //2
 	blocks.push_back(Block{false, true , false}); //3
 	blocks.push_back(Block{false, true , true }); //4
-	blocks.push_back(Block{false, false, false}); //5
-	blocks.push_back(Block{false, false, false}); //6
 	//reqs
-	std::list<std::string> reqs{"gym" , "shop"}; //gym school shop
+	std::list<std::string> reqs{"gym" , "school" , "shop"}; //gym school shop
 	
 	
 	//problem solving
