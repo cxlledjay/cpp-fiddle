@@ -11,7 +11,7 @@ enum class ListState{
 
 bool sublist(std::list<int>& sub,std::list<int>&  sup){
 	auto it = sup.begin();
-	for(int i = 0; i < sup.size()-sub.size(); i++){
+	for(int i = 0; i < sup.size()-sub.size() + 1; i++){
 		// 1 2 3 4 5 6
 		// 1 2 3 4
 		//   1 2 3 4
@@ -64,8 +64,8 @@ void print_list(std::list<int> l, std::string name){
 
 int main(){
 	
-	std::list<int> list1{1,2,3,4,5};
-	std::list<int> list2{1,2,3,4,5};
+	std::list<int> list1{0,1,2,3,4,5};
+	std::list<int> list2{3,4,5};
 	
 	print_list(list1 , "Liste Nr.1");
 	print_list(list2 , "Liste Nr.2");
