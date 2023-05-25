@@ -14,4 +14,4 @@ implementation of single linked list with reverse()
 comparing two std::list and determining what their relation is.
 
 ## binary_to_ascii_converter.cpp
-a very basic program to convert a string of 8 bit binary expressions (e.g. 01101000 01101001) to its corresponing ascii expression (e.g. hi)
+a very basic program to convert a string of 8 bit binary expressions (e.g. 01101000 01101001) to its corresponding ascii expression (e.g. hi)
