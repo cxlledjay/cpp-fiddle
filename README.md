@@ -1,5 +1,6 @@
 # cpp-fiddle
-my repository for testing and fiddling around with various random code projects\ 
+my repository for testing and fiddling around with various random code projects\
+notice that the readme file may not be updated frequently
 
 
 ## blocks.cpp
