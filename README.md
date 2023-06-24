@@ -4,6 +4,9 @@ note that the readme file may not be updated frequently
 
 
 
+## sorting algorithms
+a collection of a few sorting algorithms in the hpp file with a small program to test its functionality
+
 ## blocks.cpp
 coding interview practice (link: https://youtu.be/rw4s4M3hFfs)
 
