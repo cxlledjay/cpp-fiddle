@@ -97,8 +97,52 @@ void mysort::bubble(vec<T>& v){
 }
 
 
-//bubble sort
+//merge sort
+namespace mergesort {
+
+	template <class T>
+	void split(vec<T>& start, vec<T>& left, vec<T>& right){
+		vec<T> l,r;
+		const unsigned int half = start.size()/2;
+		for(int i = 0; i < start.size(); ++i){
+			if(i < half) l.push_back(start.at(i));
+			else r.push_back(start.at(i));
+		}
+		left = l; right = r;
+	}
+
+	template <class T>
+	vec<T> merge(vec<T>& left, vec<T>& right){
+		unsigned int l,r,size;
+		l = r = 0;
+		size = left.size() + right.size();
+		vec<T> result(size);
+
+		for(int i = 0; i < size; ++i){
+			if(l >= left.size()){ //left vector done
+				result[i] = right[r];
+				++r;
+			} else if(r >= right.size()){ //right vector done
+				result[i] = left[l];
+				++l;
+			} else if(left[l] < right[r]){ //left element smaller
+				result[i] = left[l];
+				++l;
+			} else{ //right element smaller
+				result[i] = right[r];
+				++r;
+			}
+		}
+		return result;
+	}
+}
+
 template <class T>
 void mysort::merge(vec<T>& v){
-	
+	if(v.size() < 2) return; //recursion end
+	vec<T> l,r;
+	mergesort::split(v,l,r);
+	mysort::merge(l);
+	mysort::merge(r);
+	v = mergesort::merge(l,r);
 }

@@ -34,7 +34,7 @@ namespace debug{
 template <class T>
 void sort_vector(vector<T>& v){ //CHANGE SORTING ALGORITM HERE!!!
 	//sort(v.begin() , v.end());
-	mysort::tree<T>(v);
+	mysort::merge<T>(v);
 }
 
 string random_string(const unsigned int max_length){
@@ -68,8 +68,8 @@ bool run_tests(){
 	debug::print_vector<int>(" > unsorted (int): " , v_int);
 	v_int_expected = v_int;
 	sort(v_int_expected.begin() , v_int_expected.end());
-	sort_vector<int>(v_int);
 	debug::print_vector<int>(" > expected (int): " , v_int_expected);
+	sort_vector<int>(v_int);
 	debug::print_vector<int>(" > actual   (int): " , v_int);
 	if(v_int != v_int_expected) fail = true;
 	std::cout << endl;
@@ -78,8 +78,8 @@ bool run_tests(){
 	debug::print_vector<double>(" > unsorted (double): " , v_double);
 	v_double_expected = v_double;
 	sort(v_double_expected.begin() , v_double_expected.end());
-	sort_vector<double>(v_double);
 	debug::print_vector<double>(" > expected (double): " , v_double_expected);
+	sort_vector<double>(v_double);
 	debug::print_vector<double>(" > actual   (double): " , v_double);
 	if(v_double != v_double_expected) fail = true;
 	std::cout << endl;
@@ -88,8 +88,8 @@ bool run_tests(){
 	debug::print_vector<string>(" > unsorted (string): " , v_string);
 	v_string_expected = v_string;
 	sort(v_string_expected.begin() , v_string_expected.end());
-	sort_vector<string>(v_string);
 	debug::print_vector<string>(" > expected (string): " , v_string_expected);
+	sort_vector<string>(v_string);
 	debug::print_vector<string>(" > actual   (string): " , v_string);
 	if(v_string != v_string_expected) fail = true;
 	std::cout << endl;
@@ -118,4 +118,21 @@ int main () {
 	if(all_good) std::cout << "------------------------------------------------------------------------\nAll tests were successfull!\n\n";
 	else std::cout << "------------------------------------------------------------------------\nAt least one test failed!\n\n";
 	return 0;
+}
+
+int main1() {
+	vec<int> v({3,4,1,2});
+	vec<int> l,r;
+
+	mergesort::split(v,l,r);
+
+	std::cout << "split: \n";
+	for(auto x : l) std::cout << "left: " << x << endl;
+	for(auto x : r) std::cout << "right: " << x << endl;
+
+	v = mergesort::merge(l , r);
+
+	std::cout << "merge: \n";
+	for(auto x : v) std::cout << "merged: " << x << endl;
+
 }
