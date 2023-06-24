@@ -96,7 +96,6 @@ void mysort::bubble(vec<T>& v){
 	}
 }
 
-
 //merge sort
 namespace mergesort {
 
@@ -145,4 +144,50 @@ void mysort::merge(vec<T>& v){
 	mysort::merge(l);
 	mysort::merge(r);
 	v = mergesort::merge(l,r);
+}
+
+//quick sort
+namespace quicksort{
+
+	template <class T>
+	unsigned int partition (vec<T>& v, int left, int right){
+		T piviot,temp;
+		unsigned int i,j;
+		piviot = v[left];
+		i = left + 1;
+		j = right;
+
+		while(i < j){
+			while((i < j) && (v[i] <= piviot)) ++i; //find first element thats bigger than piviot (from front)
+			while((i < j) && (v[j] >= piviot)) --j; //find first element thats smmaller than piviot (from back)
+
+			if(i < j){ //swap if not yet interfering
+				temp = v[i];
+				v[i] = v[j];
+				v[j] = temp;
+			}
+		}
+
+		if(v[i] >= piviot) --i;
+		temp = v[i];
+		v[i] = v[left];
+		v[left] = temp;
+
+		return i;
+	}
+
+	template <class T>
+	void sort_with_boundrys(vec<T>& v, int left, int right){
+		unsigned int i;
+
+		if(!(left < right)) return; //recursion stop
+		i = partition<T>(v , left , right);
+		sort_with_boundrys(v, left , i - 1);
+		sort_with_boundrys(v, i + 1 , right);
+	}
+}
+
+template <class T>
+void mysort::quick(vec<T>& v){
+	quicksort::sort_with_boundrys<T>(v , 0 , v.size() - 1);
 }

@@ -34,7 +34,7 @@ namespace debug{
 template <class T>
 void sort_vector(vector<T>& v){ //CHANGE SORTING ALGORITM HERE!!!
 	//sort(v.begin() , v.end());
-	mysort::merge<T>(v);
+	mysort::quick<T>(v);
 }
 
 string random_string(const unsigned int max_length){
