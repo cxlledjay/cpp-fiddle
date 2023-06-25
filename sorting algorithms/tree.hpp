@@ -32,7 +32,7 @@ namespace bst{
 
     template <class T>
     void inorder(Node<T>* root, std::vector<T>& out){
-        if(root == nullptr) return;
+        if(root == nullptr || root->data == nullptr) return;
         inorder(root->left.get() , out);
         out.push_back(*(root->data));
         inorder(root->right.get() , out);
